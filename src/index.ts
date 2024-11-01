@@ -4,7 +4,7 @@ import path from "path";
 
 export function startServer() {
     const APP = express();
-    const PORT = process.env.PORT || 3000;
+    const PORT = process.env.PORT || 1000;
 
     APP.use(cors());
 
@@ -23,7 +23,8 @@ export function startServer() {
 
         console.log(`Conexión desde la IP: ${clientIp}`);
 
-        res.sendFile(path.join(__dirname, "../home.html"));
+        const url = "https://www.instagram.com/p/BsqaVAwHN7z/?utm_source=ig_web_copy_link";
+        res.redirect(url);
     });
 
     APP.listen(PORT, () => {

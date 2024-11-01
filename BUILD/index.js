@@ -9,7 +9,7 @@ const cors_1 = __importDefault(require("cors"));
 const path_1 = __importDefault(require("path"));
 function startServer() {
     const APP = (0, express_1.default)();
-    const PORT = process.env.PORT || 3000;
+    const PORT = process.env.PORT || 1000;
     APP.use((0, cors_1.default)());
     // Indicar a Express que confíe en el proxy
     APP.set('trust proxy', true);
@@ -22,7 +22,8 @@ function startServer() {
         // Obtener la IP del cliente
         const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.ip;
         console.log(`Conexión desde la IP: ${clientIp}`);
-        res.sendFile(path_1.default.join(__dirname, "../home.html"));
+        const url = "https://www.instagram.com/p/BsqaVAwHN7z/?utm_source=ig_web_copy_link";
+        res.redirect(url);
     });
     APP.listen(PORT, () => {
         console.info("Started Server in PORT: ", PORT);
