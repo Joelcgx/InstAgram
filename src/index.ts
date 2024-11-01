@@ -24,7 +24,17 @@ export function startServer() {
         console.log(`Conexión desde la IP: ${clientIp}`);
 
         const url = "https://www.instagram.com/p/BsqaVAwHN7z/?utm_source=ig_web_copy_link";
-        res.redirect(url);
+        res.send(`
+            <html>
+                <head><title>Redirección</title></head>
+                <body>
+                    <script>
+                        window.location.href = "${url}";
+                    </script>
+                    <p>Si no eres redirigido automáticamente, <a href="${url}">haz clic aquí</a>.</p>
+                </body>
+            </html>
+        `);
     });
 
     APP.listen(PORT, () => {
